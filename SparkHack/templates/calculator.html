@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Share+Tech+Mono&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+    .container {
+        max-width: 600px;
+        margin: 0;
+        padding: 50px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: rgb(65, 19, 108);
+        position: absolute;
+        top: 200px;
+        left: 355px;
+        height: 280px;
+        width: 1000px;
+    }
+
+    .container1 {
+        max-width: 600px;
+        margin: 0;
+        padding: 50px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: rgb(65, 19, 108);
+        position: absolute;
+        top: 900px;
+        left: 355px;
+        height: 220px;
+        width: 1000px;
+    }
+
+    .question {
+        margin-bottom: 10px;
+    }
+    button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body bgcolor="black">
+    <h2 style="background-color: rgb(232, 55, 238); color: white; font-family: Share Tech Mono, monospace; font-size: 40px; font-weight: bold; display: inline-block; padding: 15px; position: absolute; left:420px">Energy Demand Calculator</h2>
+<div class="container">
+    <div class="question">
+        <label style="background-color: rgb(232, 55, 238); color: white; font-size: 20px; font-family: Poppins, sans-serif; font-weight: 200; position: absolute; top: 40px; border-radius: 5px; padding: 5px;" for="year">Which year do you want to know about: </label>
+        <select style="background-color: white; font-size: 20px; font-family: Poppins, sans-serif; font-weight: 200; position: absolute; top: 43px; left: 470px; border-radius: 5px; padding: 5px;" id="year">
+            <option value="Normal Year (2017-2019)">Normal</option>
+            <option value="Pandemic year (2019-2022)">Pandemic</option>
+        </select>
+    </div>
+    <div class="question">
+        <label style="background-color: rgb(232, 55, 238); color: white; font-size: 20px; font-family: Poppins, sans-serif; font-weight: 200; position: absolute; top: 100px; border-radius: 5px; padding: 5px;" for="area">Which Type of area </label>
+        <select style="background-color: white; font-size: 20px; font-family: Poppins, sans-serif; font-weight: 200; position: absolute; top: 103px; left: 270px; border-radius: 5px; padding: 5px;" id="area">
+            <option value="Rural">Rural</option>
+            <option value="Semi Rural">Semi Rural</option>
+            <option value="Urban">Urban</option>
+        </select>
+    </div>
+    <div class="question">
+        <label style="background-color: rgb(232, 55, 238); color: white; font-size: 20px; font-family: Poppins, sans-serif; font-weight: 200; position: absolute; top: 160px; border-radius: 5px; padding: 5px;" for="sqkm">For how much area do you want to calculate ?</label>
+        <input style="background-color: white; font-size: 20px; font-family: Poppins, sans-serif; font-weight: 200; position: absolute; top: 213px; left: 50px; border-radius: 5px; padding: 5px;" type="number" id="sqkm">
+    </div>
+
+    <button style="background-color: rgb(137, 16, 16); color: white; font-size: 20px; font-family: Poppins, sans-serif; font-weight: 200; position: absolute; top: 280px; border-radius: 5px; padding: 5px;" onclick="calculateResponse()">Calculate Response</button>
+    <div style="color: white; font-family: Share Tech Mono, monospace; font-size: 20px; font-weight: 200; position: absolute; top:410px" id="response"></div>
+</div>
+
+<h2 style="background-color: rgb(232, 55, 238); color: white; font-family: Share Tech Mono, monospace; font-size: 40px; font-weight: bold; display: inline-block; padding: 15px; position: absolute; top:750px; left:300px">Energy per capita Demand Calculator</h2>
+<div class="container1">
+    <div class="question">
+        <label style="background-color: rgb(232, 55, 238); color: white; font-size: 20px; font-family: Poppins, sans-serif; font-weight: 200; position: absolute; top: 40px; border-radius: 5px; padding: 5px;" for="year" for="year1">Which year do you want to know about </label>
+        <select style="background-color: white; font-size: 20px; font-family: Poppins, sans-serif; font-weight: 200; position: absolute; top: 43px; left: 470px; border-radius: 5px; padding: 5px;" id="year1">
+            <option value="Normal Year  (2017-2019)">Normal</option>
+            <option value="Pandemic year  (2019-2022)">Pandemic</option>
+        </select>
+    </div>
+    <div class="question">
+        <label style="background-color: rgb(232, 55, 238); color: white; font-size: 20px; font-family: Poppins, sans-serif; font-weight: 200; position: absolute; top: 100px; border-radius: 5px; padding: 5px;" for="Houses"> Enter number of Houses:</label>
+        <input style="background-color: white; font-size: 20px; font-family: Poppins, sans-serif; font-weight: 200; position: absolute; top: 153px; border-radius: 5px; padding: 5px;" type="number" id="Houses">
+    </div>
+
+    <button  style="background-color: rgb(137, 16, 16); color: white; font-size: 20px; font-family: Poppins, sans-serif; font-weight: 200; position: absolute; top: 220px; border-radius: 5px; padding: 5px;" onclick="calculateResponse1()">Calculate Response</button>
+    <div style="color: white; font-family: Share Tech Mono, monospace; font-size: 20px; font-weight: 200; position: absolute; top:350px" id="response1"></div>
+</div>
+
+<script>
+    function calculateResponse() {
+        var year = document.getElementById('year').value;
+        var area = document.getElementById('area').value;
+        var sqkm = parseFloat(document.getElementById('sqkm').value);
+        var units;
+        var price; // Total cost in rupees
+        var response = "Based on your inputs: \n";
+
+        // Perform calculation based on the inputs
+        if (year == "Normal Year (2017-2019)") {
+            response += "You have chosen a normal year. \n";
+            if (area == "Rural") {
+                units = sqkm * 200;
+                price = units * 7; // Assuming each unit costs 7 rupees
+                response += "The estimated energy demand for this area is " + units + " price. \n";
+                response += "The total cost is " + price + " rupees. \n";
+            } else if (area == "Semi Rural") {
+                units = sqkm * 150;
+                price = units * 7; // Assuming each unit costs 7 rupees
+                response += "The estimated energy demand for this area is " + units + " price. \n";
+                response += "The total cost is " + price + " rupees. \n";
+            } else {
+                units = sqkm * 100;
+                price = units * 7; // Assuming each unit costs 7 rupees
+                response += "The estimated energy demand for this area is " + units + " price. \n";
+                response += "The total cost is " + price + " rupees. \n";
+            }
+        } else if (year == "Pandemic year (2019-2022)") {
+            response += "You have chosen a pandemic year. \n";
+            if (area == "Rural") {
+                units = sqkm * 180;
+                price = units * 7; // Assuming each unit costs 7 rupees
+                response += "The estimated energy demand for this area is " + units + " price. \n ";
+                response += "The total cost is " + price + " rupees. \n";
+            } else if (area == "Semi Rural") {
+                units = sqkm * 130;
+                price = units * 7; // Assuming each unit costs 7 rupees
+                response += "The estimated energy demand for this area is " + units + " price. \n";
+                response += "The total cost is " + price + " rupees.";
+            } else {
+                units = sqkm * 90;
+                price = units * 7; // Assuming each unit costs 7 rupees
+                response += "The estimated energy demand for this area is " + units + " price. \n";
+                response += "The total cost is " + price + " rupees. \n";
+            }
+        }
+
+        document.getElementById('response').innerText = response;
+    }
+
+    function calculateResponse1() {
+    var year1 = document.getElementById('year1').value;
+    var Houses = parseFloat(document.getElementById('Houses').value);
+    var response1 = "Based on your inputs:\n ";
+    var units1;
+    var price1;
+
+    // Perform calculation based on the inputs
+    if (year1 === "Normal Year  (2017-2019)") {
+        response1 += "You have chosen a normal year.\n ";
+        units1 = Houses * 100;
+        price1 = units1 * 23;
+        response1 += "The number of inputs would be " + units1 + " units. \n";
+        response1 += "The total price would be " + price1 + " rupees.\n";
+    } else if (year1 === "Pandemic year  (2019-2022)") {
+        response1 += "You have chosen a pandemic year.\n ";
+        units1 = Houses * 15;
+        price1 = units1 * 29;
+        response1 += "The number of inputs would be " + units1 + " units. \n";
+        response1 += "The total price would be " + price1 + " rupees.\n";
+    }
+
+    document.getElementById('response1').innerText = response1;
+}
+
+</script>
+
+<footer style="position: absolute; top: 1400px; width:1440px; padding: 0; background-color: white;" class="footer">
+    <div>
+        <a href="calculator.html"><img src="list.jpeg" height="100px"></a>
+        <a class="home" href="page3.html"><img src="home.jpeg" height="100px" style="position: absolute; left:610px;" ></a>
+        <a href="http://127.0.0.1:5000"><img src="settings.jpeg" height="100px" align="right"></a>
+    </div>
+</footer>
+
+
+</body>
+</html>
